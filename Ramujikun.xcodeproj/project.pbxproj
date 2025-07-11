@@ -6,23 +6,31 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		6051C08C2E20EEC200959CE0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6051C0882E20EEC200959CE0 /* Assets.xcassets */; };
+		6051C08D2E20EEC200959CE0 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6051C0892E20EEC200959CE0 /* ContentView.swift */; };
+		6051C08E2E20EEC200959CE0 /* RamujikunApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6051C08A2E20EEC200959CE0 /* RamujikunApp.swift */; };
+		6051C0902E20F06900959CE0 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6051C08F2E20F06900959CE0 /* GoogleService-Info.plist */; };
+		6051C0942E20F1F700959CE0 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 6051C0932E20F1F700959CE0 /* FirebaseAuth */; };
+		6051C0962E20F1F700959CE0 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 6051C0952E20F1F700959CE0 /* FirebaseFirestore */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
 		6051C06C2E20EE4600959CE0 /* Ramujikun.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Ramujikun.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		6051C0882E20EEC200959CE0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		6051C0892E20EEC200959CE0 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		6051C08A2E20EEC200959CE0 /* RamujikunApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RamujikunApp.swift; sourceTree = "<group>"; };
+		6051C08F2E20F06900959CE0 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		6051C0912E20F08B00959CE0 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 /* End PBXFileReference section */
-
-/* Begin PBXFileSystemSynchronizedRootGroup section */
-		6051C06E2E20EE4600959CE0 /* Ramujikun */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = Ramujikun;
-			sourceTree = "<group>";
-		};
-/* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		6051C0692E20EE4600959CE0 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6051C0942E20F1F700959CE0 /* FirebaseAuth in Frameworks */,
+				6051C0962E20F1F700959CE0 /* FirebaseFirestore in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -32,7 +40,7 @@
 		6051C0632E20EE4600959CE0 = {
 			isa = PBXGroup;
 			children = (
-				6051C06E2E20EE4600959CE0 /* Ramujikun */,
+				6051C08B2E20EEC200959CE0 /* Ramujikun */,
 				6051C06D2E20EE4600959CE0 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -43,6 +51,74 @@
 				6051C06C2E20EE4600959CE0 /* Ramujikun.app */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		6051C0812E20EEC200959CE0 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				6051C08A2E20EEC200959CE0 /* RamujikunApp.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		6051C0822E20EEC200959CE0 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		6051C0832E20EEC200959CE0 /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Repository;
+			sourceTree = "<group>";
+		};
+		6051C0842E20EEC200959CE0 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		6051C0852E20EEC200959CE0 /* Util */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Util;
+			sourceTree = "<group>";
+		};
+		6051C0862E20EEC200959CE0 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		6051C0872E20EEC200959CE0 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		6051C08B2E20EEC200959CE0 /* Ramujikun */ = {
+			isa = PBXGroup;
+			children = (
+				6051C0812E20EEC200959CE0 /* App */,
+				6051C0822E20EEC200959CE0 /* Model */,
+				6051C0862E20EEC200959CE0 /* View */,
+				6051C0872E20EEC200959CE0 /* ViewModel */,
+				6051C0842E20EEC200959CE0 /* Service */,
+				6051C0832E20EEC200959CE0 /* Repository */,
+				6051C0852E20EEC200959CE0 /* Util */,
+				6051C0882E20EEC200959CE0 /* Assets.xcassets */,
+				6051C0892E20EEC200959CE0 /* ContentView.swift */,
+				6051C0912E20F08B00959CE0 /* .gitignore */,
+				6051C08F2E20F06900959CE0 /* GoogleService-Info.plist */,
+			);
+			path = Ramujikun;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -60,11 +136,10 @@
 			);
 			dependencies = (
 			);
-			fileSystemSynchronizedGroups = (
-				6051C06E2E20EE4600959CE0 /* Ramujikun */,
-			);
 			name = Ramujikun;
 			packageProductDependencies = (
+				6051C0932E20F1F700959CE0 /* FirebaseAuth */,
+				6051C0952E20F1F700959CE0 /* FirebaseFirestore */,
 			);
 			productName = Ramujikun;
 			productReference = 6051C06C2E20EE4600959CE0 /* Ramujikun.app */;
@@ -94,6 +169,9 @@
 			);
 			mainGroup = 6051C0632E20EE4600959CE0;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				6051C0922E20F1F700959CE0 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 6051C06D2E20EE4600959CE0 /* Products */;
 			projectDirPath = "";
@@ -109,6 +187,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6051C08C2E20EEC200959CE0 /* Assets.xcassets in Resources */,
+				6051C0902E20F06900959CE0 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -119,6 +199,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6051C08D2E20EEC200959CE0 /* ContentView.swift in Sources */,
+				6051C08E2E20EEC200959CE0 /* RamujikunApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -256,11 +338,14 @@
 				DEVELOPMENT_TEAM = 25233JX367;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "ららららむじくん";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.lifestyle";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -270,7 +355,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -284,11 +369,14 @@
 				DEVELOPMENT_TEAM = 25233JX367;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "ららららむじくん";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.lifestyle";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -298,7 +386,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -324,6 +412,30 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		6051C0922E20F1F700959CE0 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 11.15.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		6051C0932E20F1F700959CE0 /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 6051C0922E20F1F700959CE0 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
+		6051C0952E20F1F700959CE0 /* FirebaseFirestore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 6051C0922E20F1F700959CE0 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestore;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 6051C0642E20EE4600959CE0 /* Project object */;
 }
