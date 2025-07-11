@@ -13,6 +13,7 @@
 		6051C0902E20F06900959CE0 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6051C08F2E20F06900959CE0 /* GoogleService-Info.plist */; };
 		6051C0942E20F1F700959CE0 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 6051C0932E20F1F700959CE0 /* FirebaseAuth */; };
 		6051C0962E20F1F700959CE0 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 6051C0952E20F1F700959CE0 /* FirebaseFirestore */; };
+		6051C0C72E20FCAA00959CE0 /* Mood.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6051C0C62E20FCAA00959CE0 /* Mood.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,7 @@
 		6051C08A2E20EEC200959CE0 /* RamujikunApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RamujikunApp.swift; sourceTree = "<group>"; };
 		6051C08F2E20F06900959CE0 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		6051C0912E20F08B00959CE0 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		6051C0C62E20FCAA00959CE0 /* Mood.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mood.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +66,7 @@
 		6051C0822E20EEC200959CE0 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				6051C0C62E20FCAA00959CE0 /* Mood.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -200,6 +203,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6051C08D2E20EEC200959CE0 /* ContentView.swift in Sources */,
+				6051C0C72E20FCAA00959CE0 /* Mood.swift in Sources */,
 				6051C08E2E20EEC200959CE0 /* RamujikunApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
