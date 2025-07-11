@@ -17,6 +17,16 @@
 		6051C0C92E210A5900959CE0 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6051C0C82E210A5900959CE0 /* AuthService.swift */; };
 		6051C0CB2E210AA900959CE0 /* MoodRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6051C0CA2E210AA900959CE0 /* MoodRepository.swift */; };
 		6051C0CD2E210ACE00959CE0 /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6051C0CC2E210ACE00959CE0 /* NotificationService.swift */; };
+		6051C0CF2E210B8100959CE0 /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6051C0CE2E210B8100959CE0 /* AuthViewModel.swift */; };
+		6051C0D12E210B9600959CE0 /* CalendarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6051C0D02E210B9600959CE0 /* CalendarViewModel.swift */; };
+		6051C0D32E210BA500959CE0 /* MoodEntryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6051C0D22E210BA500959CE0 /* MoodEntryViewModel.swift */; };
+		6051C0D52E210BBC00959CE0 /* StatisticViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6051C0D42E210BBC00959CE0 /* StatisticViewModel.swift */; };
+		6051C0D72E210BD200959CE0 /* ReminderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6051C0D62E210BD200959CE0 /* ReminderViewModel.swift */; };
+		6051C0D92E210BE600959CE0 /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6051C0D82E210BE600959CE0 /* CalendarView.swift */; };
+		6051C0DB2E210BF400959CE0 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6051C0DA2E210BF400959CE0 /* SettingsView.swift */; };
+		6051C0DD2E210C0000959CE0 /* MoodEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6051C0DC2E210C0000959CE0 /* MoodEntryView.swift */; };
+		6051C0DF2E210C1200959CE0 /* AuthenticationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6051C0DE2E210C1200959CE0 /* AuthenticationView.swift */; };
+		6051C0E12E210C2E00959CE0 /* ReminderSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6051C0E02E210C2E00959CE0 /* ReminderSettingsView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +40,16 @@
 		6051C0C82E210A5900959CE0 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 		6051C0CA2E210AA900959CE0 /* MoodRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoodRepository.swift; sourceTree = "<group>"; };
 		6051C0CC2E210ACE00959CE0 /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
+		6051C0CE2E210B8100959CE0 /* AuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
+		6051C0D02E210B9600959CE0 /* CalendarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewModel.swift; sourceTree = "<group>"; };
+		6051C0D22E210BA500959CE0 /* MoodEntryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoodEntryViewModel.swift; sourceTree = "<group>"; };
+		6051C0D42E210BBC00959CE0 /* StatisticViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticViewModel.swift; sourceTree = "<group>"; };
+		6051C0D62E210BD200959CE0 /* ReminderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderViewModel.swift; sourceTree = "<group>"; };
+		6051C0D82E210BE600959CE0 /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
+		6051C0DA2E210BF400959CE0 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		6051C0DC2E210C0000959CE0 /* MoodEntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoodEntryView.swift; sourceTree = "<group>"; };
+		6051C0DE2E210C1200959CE0 /* AuthenticationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationView.swift; sourceTree = "<group>"; };
+		6051C0E02E210C2E00959CE0 /* ReminderSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderSettingsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,6 +124,11 @@
 		6051C0862E20EEC200959CE0 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				6051C0D82E210BE600959CE0 /* CalendarView.swift */,
+				6051C0DA2E210BF400959CE0 /* SettingsView.swift */,
+				6051C0DC2E210C0000959CE0 /* MoodEntryView.swift */,
+				6051C0DE2E210C1200959CE0 /* AuthenticationView.swift */,
+				6051C0E02E210C2E00959CE0 /* ReminderSettingsView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -111,6 +136,11 @@
 		6051C0872E20EEC200959CE0 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				6051C0CE2E210B8100959CE0 /* AuthViewModel.swift */,
+				6051C0D02E210B9600959CE0 /* CalendarViewModel.swift */,
+				6051C0D22E210BA500959CE0 /* MoodEntryViewModel.swift */,
+				6051C0D42E210BBC00959CE0 /* StatisticViewModel.swift */,
+				6051C0D62E210BD200959CE0 /* ReminderViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -211,12 +241,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6051C0D12E210B9600959CE0 /* CalendarViewModel.swift in Sources */,
 				6051C0CB2E210AA900959CE0 /* MoodRepository.swift in Sources */,
+				6051C0D92E210BE600959CE0 /* CalendarView.swift in Sources */,
 				6051C08D2E20EEC200959CE0 /* ContentView.swift in Sources */,
 				6051C0C72E20FCAA00959CE0 /* Mood.swift in Sources */,
+				6051C0D32E210BA500959CE0 /* MoodEntryViewModel.swift in Sources */,
+				6051C0CF2E210B8100959CE0 /* AuthViewModel.swift in Sources */,
+				6051C0E12E210C2E00959CE0 /* ReminderSettingsView.swift in Sources */,
 				6051C08E2E20EEC200959CE0 /* RamujikunApp.swift in Sources */,
+				6051C0DD2E210C0000959CE0 /* MoodEntryView.swift in Sources */,
 				6051C0CD2E210ACE00959CE0 /* NotificationService.swift in Sources */,
 				6051C0C92E210A5900959CE0 /* AuthService.swift in Sources */,
+				6051C0D52E210BBC00959CE0 /* StatisticViewModel.swift in Sources */,
+				6051C0D72E210BD200959CE0 /* ReminderViewModel.swift in Sources */,
+				6051C0DB2E210BF400959CE0 /* SettingsView.swift in Sources */,
+				6051C0DF2E210C1200959CE0 /* AuthenticationView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
