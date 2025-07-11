@@ -60,6 +60,7 @@
 		6051C0E62E210E6C00959CE0 /* AppError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppError.swift; sourceTree = "<group>"; };
 		6051C0E82E210E8000959CE0 /* Color+Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Theme.swift"; sourceTree = "<group>"; };
 		6051C0EA2E210E9E00959CE0 /* Validation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validation.swift; sourceTree = "<group>"; };
+		6051C0EC2E2113B700959CE0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -163,6 +164,7 @@
 		6051C08B2E20EEC200959CE0 /* Ramujikun */ = {
 			isa = PBXGroup;
 			children = (
+				6051C0EC2E2113B700959CE0 /* Info.plist */,
 				6051C0812E20EEC200959CE0 /* App */,
 				6051C0822E20EEC200959CE0 /* Model */,
 				6051C0862E20EEC200959CE0 /* View */,
@@ -414,8 +416,10 @@
 				DEVELOPMENT_TEAM = 25233JX367;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Ramujikun/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "ららららむじくん";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.lifestyle";
+				INFOPLIST_KEY_NSRemindersUsageDescription = "気分記録のリマインダー通知を送信します";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -445,8 +449,10 @@
 				DEVELOPMENT_TEAM = 25233JX367;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Ramujikun/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "ららららむじくん";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.lifestyle";
+				INFOPLIST_KEY_NSRemindersUsageDescription = "気分記録のリマインダー通知を送信します";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
