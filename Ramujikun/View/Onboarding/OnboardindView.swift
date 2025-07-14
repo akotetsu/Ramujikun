@@ -9,7 +9,7 @@ import SwiftUI
 
 struct OnboardindView: View {
     @State private var currentPage = 0
-    @Environment(\.dismiss) private var dismiss
+    @AppStorage("hasSeenOnboarding") var hasSeenOnboarding: Bool = false
     
     var body: some View {
         VStack {
@@ -33,7 +33,7 @@ struct OnboardindView: View {
             
             HStack {
                 Button("スキップ") {
-                    dismiss()
+                    hasSeenOnboarding = true
                 }
                 .foregroundColor(.gray)
                 Spacer()
@@ -41,7 +41,7 @@ struct OnboardindView: View {
                     if currentPage < onboardingPages.count - 1 {
                         withAnimation { currentPage += 1 }
                     } else {
-                        dismiss()
+                        hasSeenOnboarding = true
                     }
                 }
                 .foregroundColor(.orange)

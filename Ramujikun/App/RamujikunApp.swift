@@ -20,10 +20,18 @@ class AppDelegate: NSObject, UIApplicationDelegate {
 @main
 struct RamujikunApp: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
+    @AppStorage("hasSeenOnboarding") var hasSeenOnboarding: Bool = false
     var body: some Scene {
         WindowGroup {
-            CalendarView()
-                .environmentObject(AuthViewModel())
+            if hasSeenOnboarding {
+                CalendarView()
+                    .environmentObject(AuthViewModel())
+            } else {
+                OnboardindView()
+                    .onDisappear {
+                        hasSeenOnboarding = true
+                    }
+            }
         }
     }
 }
