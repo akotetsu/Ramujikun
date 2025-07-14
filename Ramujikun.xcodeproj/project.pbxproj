@@ -63,6 +63,14 @@
 		6051C0EC2E2113B700959CE0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		6051C1512E251F6B00959CE0 /* Onboarding */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = Onboarding;
+			sourceTree = "<group>";
+		};
+/* End PBXFileSystemSynchronizedRootGroup section */
+
 /* Begin PBXFrameworksBuildPhase section */
 		6051C0692E20EE4600959CE0 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
@@ -139,6 +147,7 @@
 		6051C0862E20EEC200959CE0 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				6051C1512E251F6B00959CE0 /* Onboarding */,
 				6051C0D82E210BE600959CE0 /* CalendarView.swift */,
 				6051C0DA2E210BF400959CE0 /* SettingsView.swift */,
 				6051C0DC2E210C0000959CE0 /* MoodEntryView.swift */,
@@ -194,6 +203,9 @@
 			buildRules = (
 			);
 			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				6051C1512E251F6B00959CE0 /* Onboarding */,
 			);
 			name = Ramujikun;
 			packageProductDependencies = (

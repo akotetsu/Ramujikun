@@ -20,17 +20,25 @@ struct MoodEntryView: View {
     var body: some View {
         ZStack(alignment: .topTrailing) {
             viewModel.selectedLevel.color.opacity(0.15).ignoresSafeArea()
-            VStack(spacing: 20) {
-                header
-                moodIllustration
-                moodPickerSection
-                commentEditor
-                Spacer(minLength: 0)
-                if viewModel.isEditable {
-                    saveButton
+            ScrollView {
+                VStack(spacing: 20) {
+                    header
+                    moodIllustration
+                    moodPickerSection
+                    commentEditor
+                    Spacer(minLength: 0)
+                    if viewModel.isEditable {
+                        saveButton
+                    }
                 }
+                .frame(maxWidth: 420) // iPadでも広がりすぎないように最大幅を制限
+                .padding(24)
+                .background(Color(.systemBackground).opacity(0.95))
+                .cornerRadius(32)
+                .shadow(color: .black.opacity(0.05), radius: 12, x: 0, y: 4)
+                .frame(maxWidth: .infinity, minHeight: UIScreen.main.bounds.height * 0.85, alignment: .center)
+                .padding(.vertical, 32)
             }
-            .padding(24)
             closeButton
         }
         .toolbar {
