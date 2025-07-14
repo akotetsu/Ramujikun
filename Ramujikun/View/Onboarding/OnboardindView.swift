@@ -20,7 +20,7 @@ struct OnboardindView: View {
                 }
             }
             .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
-            .frame(height: 480)
+            //.frame(height: 480)
             
             HStack(spacing: 8) {
                 ForEach(0..<onboardingPages.count, id: \.self) { i in
@@ -51,7 +51,7 @@ struct OnboardindView: View {
             .padding(.top, 16)
         }
         .padding(.vertical, 32)
-        .background(Color(.systemBackground).ignoresSafeArea())
+        .background(Color(.systemGray5).ignoresSafeArea())
     }
 }
 
