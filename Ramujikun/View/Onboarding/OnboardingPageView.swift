@@ -14,14 +14,13 @@ struct OnboardingPageView: View {
         VStack(spacing: 32) {
             Spacer(minLength: 0)
             ZStack {
-                Circle()
-                    .fill(Color(.systemGray6))
-                    .frame(width: 180, height: 180)
-                Image(systemName: page.imageName)
+//                Circle()
+//                    .fill(Color(.systemGray6))
+//                    .frame(width: 180, height: 180)
+                Image(page.imageName)
                     .resizable()
                     .scaledToFit()
-                    .frame(width: 100, height: 100)
-                    .foregroundColor(Color.orange)
+                    .frame(width: 300, height: 300)
             }
             VStack(spacing: 12) {
                 Text(page.title)

@@ -17,17 +17,17 @@ struct OnboardingPageData: Identifiable {
 
 let onboardingPages: [OnboardingPageData] = [
     OnboardingPageData(
-        imageName: "person.crop.circle.badge.plus",
-        title: "ようこそ、らむじくんへ",
+        imageName: "オンボ1",
+        title: "ようこそ、ららららむじくんへ",
         description: "このアプリは、あなたの毎日の気分を手軽に記録できるアプリです。"
     ),
     OnboardingPageData(
-        imageName: "face.smiling",
+        imageName: "オンボ2",
         title: "気分を記録してみよう",
         description: "気分を記録することで、自分の心の変化に気づきやすくなります。"
     ),
     OnboardingPageData(
-        imageName: "checkmark.seal",
+        imageName: "オンボ3",
         title: "今日からスタート！",
         description: "さっそく気分を記録して、毎日をもっと快適に過ごしましょう。"
     )
