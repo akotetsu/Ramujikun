@@ -32,7 +32,12 @@ class StatisticViewModel: ObservableObject {
     private func processMoods(_ moods: [Mood]) {
         let calendar = Calendar.current
         let grouped = Dictionary(grouping: moods) { calendar.component(.day, from: $0.date) }
-        let stats: [MoodStat] = grouped.keys.sorted().map { day in
+        
+        // 日付でソートして直近の5日分のみを取得
+        let sortedDays = grouped.keys.sorted()
+        let recentDays = sortedDays.suffix(5)
+        
+        let stats: [MoodStat] = recentDays.map { day in
             let dayMoods = grouped[day] ?? []
             let avg = dayMoods.map { $0.level.numericValue }.average
             let icon = Mood.MoodLevel.assetImage(for: avg)
