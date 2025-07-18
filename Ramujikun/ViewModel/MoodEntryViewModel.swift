@@ -3,6 +3,7 @@ import Foundation
 @MainActor
 final class MoodEntryViewModel: ObservableObject {
     @Published var selectedLevel: Mood.MoodLevel
+    @Published var selectedLevelIndex: Int
     @Published var comment: String
     @Published private(set) var isEditable: Bool
     
@@ -16,10 +17,21 @@ final class MoodEntryViewModel: ObservableObject {
         self.moodRepository = repository
         
         self.selectedLevel = mood?.level ?? .meh
+        self.selectedLevelIndex = Mood.MoodLevel.allCases.firstIndex(of: mood?.level ?? .meh) ?? 2
         self.comment = mood?.comment ?? ""
         
         let calendar = Calendar.current
         self.isEditable = calendar.isDateInToday(date) || calendar.isDateInYesterday(date)
+    }
+    
+    func updateSelectedLevel(_ level: Mood.MoodLevel) {
+        selectedLevel = level
+        selectedLevelIndex = Mood.MoodLevel.allCases.firstIndex(of: level) ?? 2
+    }
+    
+    func updateSelectedLevelIndex(_ index: Int) {
+        selectedLevelIndex = index
+        selectedLevel = Mood.MoodLevel.allCases[index]
     }
     
     func saveMood() async {

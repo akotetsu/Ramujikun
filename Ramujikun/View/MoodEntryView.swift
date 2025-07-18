@@ -7,10 +7,6 @@ struct MoodEntryView: View {
     @FocusState private var isCommentFocused: Bool
     
     // UI constants
-    private let iconSize: CGFloat = 100
-    private let moodCircleSize: CGFloat = 56
-    private let moodIconSize: CGFloat = 32
-    private let moodLabelWidth: CGFloat = 60
     private let commentEditorHeight: CGFloat = 120
     
     init(date: Date, mood: Mood?) {
@@ -19,7 +15,7 @@ struct MoodEntryView: View {
     
     var body: some View {
         ZStack(alignment: .topTrailing) {
-            viewModel.selectedLevel.color.opacity(0.15).ignoresSafeArea()
+            viewModel.selectedLevel.color.opacity(0.45).ignoresSafeArea()
             ScrollView {
                 VStack(spacing: 20) {
                     header
@@ -102,57 +98,84 @@ private extension MoodEntryView {
         }
     }
     
-    // 気分ピッカー（横スクロール）
+    // 気分ピッカー（スライダー形式）
     var moodPickerSection: some View {
-        VStack(spacing: 8) {
+        VStack(spacing: 16) {
             HStack {
                 Text("気分を選択")
                     .font(.system(.headline, design: .rounded).weight(.bold))
                     .foregroundColor(.themeAccent.opacity(0.8))
                 Spacer()
             }
-            ScrollView(.horizontal, showsIndicators: false) {
-                HStack(spacing: 24) {
-                    ForEach(Mood.MoodLevel.allCases, id: \.self) { level in
-                        moodPickerItem(for: level)
+            
+            // シンプルなスライダー
+            VStack(spacing: 12) {
+                // スライダーのトラック
+                GeometryReader { geometry in
+                    ZStack(alignment: .leading) {
+                        // 背景トラック
+                        Rectangle()
+                            .fill(Color.gray.opacity(0.2))
+                            .frame(height: 6)
+                            .cornerRadius(3)
+                        
+                        // スライダーのつまみ
+                        Circle()
+                            .fill(Color.themeAccent)
+                            .frame(width: 20, height: 20)
+                            .shadow(color: .black.opacity(0.1), radius: 2, x: 0, y: 1)
+                            .offset(x: (geometry.size.width - 20) * CGFloat(viewModel.selectedLevelIndex) / 4)
+                            .gesture(
+                                DragGesture()
+                                    .onChanged { value in
+                                        if viewModel.isEditable {
+                                            let percentage = max(0, min(1, value.location.x / geometry.size.width))
+                                            let index = Int(round(percentage * 4))
+                                            if index != viewModel.selectedLevelIndex {
+                                                let impact = UIImpactFeedbackGenerator(style: .light)
+                                                impact.impactOccurred()
+                                                viewModel.updateSelectedLevelIndex(index)
+                                            }
+                                        }
+                                    }
+                            )
+                    }
+                    .contentShape(Rectangle())
+                    .onTapGesture { location in
+                        if viewModel.isEditable {
+                            // GeometryReaderの座標系を使用
+                            let percentage = max(0, min(1, location.x / geometry.size.width))
+                            let index = Int(round(percentage * 4))
+                            if index != viewModel.selectedLevelIndex {
+                                let impact = UIImpactFeedbackGenerator(style: .light)
+                                impact.impactOccurred()
+                                viewModel.updateSelectedLevelIndex(index)
+                            }
+                        }
                     }
                 }
-                .padding(.vertical, 8)
+                .frame(height: 20)
+                
+                // 気分レベルラベル
+                HStack {
+                    ForEach(Array(Mood.MoodLevel.allCases.enumerated()), id: \.element) { index, level in
+                        VStack(spacing: 4) {
+                            Image(systemName: level.illustrationName)
+                                .font(.system(size: 18))
+                                .foregroundColor(level.color)
+//                            Text(level.rawValue)
+//                                .font(.system(.caption2, design: .rounded).weight(.medium))
+//                                .foregroundColor(.themeAccent.opacity(0.7))
+                        }
+                        .frame(maxWidth: .infinity)
+                    }
+                }
             }
+            .padding(.horizontal, 8)
         }
     }
     
-    // 気分ピッカーの各アイテム
-    func moodPickerItem(for level: Mood.MoodLevel) -> some View {
-        VStack(spacing: 8) {
-            ZStack {
-                Circle()
-                    .fill(level.color.opacity(0.25))
-                    .frame(width: moodCircleSize, height: moodCircleSize)
-                Image(systemName: level.illustrationName)
-                    .font(.system(size: moodIconSize))
-                    .foregroundColor(level.color)
-            }
-            .overlay(
-                Circle()
-                    .stroke(level == viewModel.selectedLevel ? level.color : Color.clear, lineWidth: 4)
-                    .shadow(color: level == viewModel.selectedLevel ? level.color.opacity(0.4) : .clear, radius: 6)
-            )
-            .onTapGesture {
-                if viewModel.isEditable {
-                    // 触覚フィードバックを追加
-                    let impact = UIImpactFeedbackGenerator(style: .light)
-                    impact.impactOccurred()
-                    viewModel.selectedLevel = level
-                }
-            }
-            // Text(level.rawValue) // ← ここをコメントアウトまたは削除
-            //    .font(.system(.callout, design: .rounded).weight(.bold))
-            //    .foregroundColor(.themeAccent)
-            //    .lineLimit(1)
-            //    .frame(width: moodLabelWidth)
-        }
-    }
+
     
     // コメント入力欄
     var commentEditor: some View {
