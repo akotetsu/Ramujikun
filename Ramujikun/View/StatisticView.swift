@@ -148,12 +148,6 @@ struct MoodLineChart: View {
                 x: .value("日付", stat.dateLabel),
                 y: .value("気分", stat.averageLevel)
             )
-            .annotation(position: .top) {
-                Image(stat.icon)
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .frame(width: 24, height: 24)
-            }
         }
         .chartYScale(domain: 1...5)
         .chartYAxis {
@@ -162,7 +156,16 @@ struct MoodLineChart: View {
                     AxisGridLine()
                     AxisTick()
                     AxisValueLabel {
-                        Text("\(Int(v))")
+                        let moodLevel = Mood.MoodLevel.allCases[Int(v) - 1]
+                        ZStack {
+                            Circle()
+                                .fill(moodLevel.color.opacity(0.85))
+                                .frame(width: 28, height: 28)
+                            Image(moodLevel.assetImageName)
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                                .frame(width: 20, height: 20)
+                        }
                     }
                 }
             }
