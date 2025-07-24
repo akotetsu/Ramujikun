@@ -1,5 +1,5 @@
 //
-//  OnboardindView.swift
+//  OnboardingView.swift
 //  Ramujikun
 //
 //  Created by 原里駆 on 2025/07/14.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct OnboardindView: View {
+struct OnboardingView: View {
     @State private var currentPage = 0
     @AppStorage("hasSeenOnboarding") var hasSeenOnboarding: Bool = false
     
@@ -56,5 +56,5 @@ struct OnboardindView: View {
 }
 
 #Preview {
-    OnboardindView()
+    OnboardingView()
 }

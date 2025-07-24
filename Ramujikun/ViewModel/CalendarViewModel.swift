@@ -17,6 +17,12 @@ final class CalendarViewModel: ObservableObject {
     private var cancellables = Set<AnyCancellable>()
     private var authCancellable: AnyCancellable?
     
+    deinit {
+        moodListener?.remove()
+        cancellables.removeAll()
+        authCancellable?.cancel()
+    }
+    
     init(moodRepository: MoodRepositoryProtocol = FirebaseMoodRepository()) {
         self.moodRepository = moodRepository
         

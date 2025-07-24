@@ -6,6 +6,8 @@ final class MoodEntryViewModel: ObservableObject {
     @Published var selectedLevelIndex: Int
     @Published var comment: String
     @Published private(set) var isEditable: Bool
+    @Published var errorMessage: String?
+    @Published var isLoading: Bool = false
     
     let date: Date
     private let existingMood: Mood?
@@ -36,9 +38,18 @@ final class MoodEntryViewModel: ObservableObject {
     
     func saveMood() async {
         guard let userId = AuthService.shared.currentUser?.uid else {
-            print("User not logged in.")
+            errorMessage = "ユーザーがログインしていません"
             return
         }
+        
+        // バリデーション
+        if let validationError = Validation.commentValidationMessage(comment) {
+            errorMessage = validationError
+            return
+        }
+        
+        isLoading = true
+        errorMessage = nil
         
         let moodToSave = Mood(
             id: existingMood?.id,
@@ -55,8 +66,11 @@ final class MoodEntryViewModel: ObservableObject {
                 try await moodRepository.addMood(moodToSave)
             }
         } catch {
+            errorMessage = "保存に失敗しました: \(error.localizedDescription)"
             print("Error saving mood: \(error)")
         }
+        
+        isLoading = false
     }
     
     func deleteMood() async {

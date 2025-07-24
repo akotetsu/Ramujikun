@@ -261,8 +261,6 @@ struct SettingsView_Previews: PreviewProvider {
             SettingsView()
                 .environmentObject(authViewModel)
                 .previewDisplayName("匿名ユーザー")
-            
-            // TODO: プレビューで認証済み状態を再現するには、AuthServiceのモックが必要です
         }
     }
 }

@@ -27,7 +27,7 @@ struct RamujikunApp: App {
                 CalendarView()
                     .environmentObject(AuthViewModel())
             } else {
-                OnboardindView()
+                OnboardingView()
                     .onDisappear {
                         hasSeenOnboarding = true
                     }

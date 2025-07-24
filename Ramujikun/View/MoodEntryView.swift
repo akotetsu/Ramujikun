@@ -44,6 +44,15 @@ struct MoodEntryView: View {
                 .foregroundColor(.themeAccent)
             }
         }
+        .alert("エラー", isPresented: .constant(viewModel.errorMessage != nil)) {
+            Button("OK") {
+                viewModel.errorMessage = nil
+            }
+        } message: {
+            if let errorMessage = viewModel.errorMessage {
+                Text(errorMessage)
+            }
+        }
     }
 }
 
@@ -180,9 +189,15 @@ private extension MoodEntryView {
     // コメント入力欄
     var commentEditor: some View {
         VStack(alignment: .leading, spacing: 4) {
-            Text("コメント（オプション）")
-                .font(.system(.headline, design: .rounded).weight(.bold))
-                .foregroundColor(.themeAccent.opacity(0.8))
+            HStack {
+                Text("コメント（オプション）")
+                    .font(.system(.headline, design: .rounded).weight(.bold))
+                    .foregroundColor(.themeAccent.opacity(0.8))
+                Spacer()
+                Text("\(viewModel.comment.count)/500")
+                    .font(.caption)
+                    .foregroundColor(viewModel.comment.count > 500 ? .red : .secondary)
+            }
             if viewModel.isEditable {
                 ZStack(alignment: .topLeading) {
                     TextEditor(text: $viewModel.comment)
@@ -193,6 +208,11 @@ private extension MoodEntryView {
                         .cornerRadius(20, antialiased: true)
                         .disabled(!viewModel.isEditable)
                         .focused($isCommentFocused)
+                        .onChange(of: viewModel.comment) { newValue in
+                            if newValue.count > 500 {
+                                viewModel.comment = String(newValue.prefix(500))
+                            }
+                        }
                     if viewModel.comment.isEmpty {
                         Text("詳細な情報を記録できます")
                             .font(.system(.body, design: .rounded))
@@ -226,21 +246,32 @@ private extension MoodEntryView {
             
             Task {
                 await viewModel.saveMood()
-                dismiss()
+                if viewModel.errorMessage == nil {
+                    dismiss()
+                }
             }
         } label: {
-            Label("保存", systemImage: "checkmark.circle.fill")
-                .font(.system(.headline, design: .rounded).weight(.bold))
-                .frame(maxWidth: .infinity)
-                .padding()
-                .background(Color.themeAccent)
-                .foregroundColor(Color.themeButtonText)
-                .clipShape(Capsule())
-                .shadow(color: Color.themeAccent.opacity(0.3), radius: 8, x: 0, y: 4)
+            HStack {
+                if viewModel.isLoading {
+                    ProgressView()
+                        .progressViewStyle(CircularProgressViewStyle(tint: .white))
+                        .scaleEffect(0.8)
+                } else {
+                    Label("保存", systemImage: "checkmark.circle.fill")
+                }
+            }
+            .font(.system(.headline, design: .rounded).weight(.bold))
+            .frame(maxWidth: .infinity)
+            .padding()
+            .background(Color.themeAccent)
+            .foregroundColor(Color.themeButtonText)
+            .clipShape(Capsule())
+            .shadow(color: Color.themeAccent.opacity(0.3), radius: 8, x: 0, y: 4)
         }
-        .disabled(isCommentFocused) // キーボード表示中は無効化
-        .opacity(isCommentFocused ? 0.6 : 1.0)
+        .disabled(isCommentFocused || viewModel.isLoading) // キーボード表示中またはローディング中は無効化
+        .opacity((isCommentFocused || viewModel.isLoading) ? 0.6 : 1.0)
         .animation(.easeInOut(duration: 0.2), value: isCommentFocused)
+        .animation(.easeInOut(duration: 0.2), value: viewModel.isLoading)
     }
     
     // 閉じるボタン
