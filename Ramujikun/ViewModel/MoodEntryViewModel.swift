@@ -67,7 +67,7 @@ final class MoodEntryViewModel: ObservableObject {
             }
         } catch {
             errorMessage = "保存に失敗しました: \(error.localizedDescription)"
-            Logger.error("Error saving mood", category: .mood, error: error)
+            print("Error saving mood: \(error)")
         }
         
         isLoading = false
@@ -78,7 +78,7 @@ final class MoodEntryViewModel: ObservableObject {
         do {
             try await moodRepository.deleteMood(moodToDelete)
         } catch {
-            Logger.error("Error deleting mood", category: .mood, error: error)
+            print("Error deleting mood: \(error)")
         }
     }
 }

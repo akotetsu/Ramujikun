@@ -51,7 +51,7 @@ final class FirebaseMoodRepository: MoodRepositoryProtocol {
         
         return query.addSnapshotListener { snapshot, error in
             guard let snapshot = snapshot else {
-                Logger.error("Error fetching snapshots", category: .network, error: error)
+                print("Error fetching snapshots: \(error!)")
                 return
             }
             
@@ -72,7 +72,7 @@ final class FirebaseMoodRepository: MoodRepositoryProtocol {
         }
         
         try await batch.commit()
-        Logger.log("Successfully deleted all moods for user: \(userId)", category: .mood)
+        print("Successfully deleted all moods for user: \(userId)")
     }
 }
 

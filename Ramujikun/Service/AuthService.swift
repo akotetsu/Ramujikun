@@ -32,12 +32,12 @@ final class AuthService: AuthServiceProtocol {
     
     func signInAnonymously() async throws -> User {
         if let currentUser = self.currentUser {
-            Logger.log("Already signed in with user ID: \(currentUser.uid)", category: .auth)
+            print("Already signed in with user ID: \(currentUser.uid)")
             return currentUser
         }
         
         let authResult = try await auth.signInAnonymously()
-        Logger.log("Signed in anonymously with user ID: \(authResult.user.uid)", category: .auth)
+        print("Signed in anonymously with user ID: \(authResult.user.uid)")
         return authResult.user
     }
     
@@ -49,25 +49,25 @@ final class AuthService: AuthServiceProtocol {
         let credential = EmailAuthProvider.credential(withEmail: email, password: password)
         
         let result = try await currentUser.link(with: credential)
-        Logger.log("Successfully linked anonymous account to email: \(result.user.email ?? "N/A")", category: .auth)
+        print("Successfully linked anonymous account to email: \(result.user.email ?? "N/A")")
         return result.user
     }
 
     func signUp(email: String, password: String) async throws -> User {
         let authResult = try await auth.createUser(withEmail: email, password: password)
-        Logger.log("Successfully signed up with email: \(authResult.user.email ?? "N/A")", category: .auth)
+        print("Successfully signed up with email: \(authResult.user.email ?? "N/A")")
         return authResult.user
     }
     
     func signIn(email: String, password: String) async throws -> User {
         let authResult = try await auth.signIn(withEmail: email, password: password)
-        Logger.log("Successfully signed in with email: \(authResult.user.email ?? "N/A")", category: .auth)
+        print("Successfully signed in with email: \(authResult.user.email ?? "N/A")")
         return authResult.user
     }
 
     func signOut() throws {
         try auth.signOut()
-        Logger.log("User signed out", category: .auth)
+        print("User signed out.")
     }
     
     func deleteAccount() async throws {
@@ -85,7 +85,7 @@ final class AuthService: AuthServiceProtocol {
         
         // 次にユーザーアカウントを削除
         try await currentUser.delete()
-        Logger.log("User account and all data deleted successfully", category: .auth)
+        print("User account and all data deleted successfully.")
     }
 }
 
