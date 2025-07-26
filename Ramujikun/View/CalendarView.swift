@@ -73,6 +73,7 @@ struct CalendarView: View {
             .buttonStyle(PlainButtonStyle())
             .contentShape(Circle())
             .padding(.leading, 4)
+            .buttonAccessibility(title: "設定", icon: "設定画面を開く")
             Spacer()
             Text(currentMonthTitle)
                 .font(.system(.largeTitle, design: .rounded).weight(.heavy))
@@ -92,6 +93,7 @@ struct CalendarView: View {
             .buttonStyle(PlainButtonStyle())
             .contentShape(Circle())
             .padding(.trailing, 4)
+            .buttonAccessibility(title: "統計", icon: "統計画面を開く")
         }
         .padding(.vertical)
     }

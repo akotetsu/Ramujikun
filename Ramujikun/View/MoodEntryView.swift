@@ -208,7 +208,7 @@ private extension MoodEntryView {
                         .cornerRadius(20, antialiased: true)
                         .disabled(!viewModel.isEditable)
                         .focused($isCommentFocused)
-                        .onChange(of: viewModel.comment) { newValue in
+                        .onChange(of: viewModel.comment) { oldValue, newValue in
                             if newValue.count > 500 {
                                 viewModel.comment = String(newValue.prefix(500))
                             }
