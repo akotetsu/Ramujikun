@@ -18,17 +18,17 @@ struct OnboardingPageData: Identifiable {
 let onboardingPages: [OnboardingPageData] = [
     OnboardingPageData(
         imageName: "オンボ1",
-        title: "ようこそ、ららららむじくんへ",
-        description: "このアプリは、あなたの毎日の気分を手軽に記録できるアプリです。"
+        title: "気分を記録して心の変化を把握",
+        description: "5段階の気分レベルで、あなたの毎日の感情を簡単に記録できます。\n\n記録することで、自分の心の変化に気づきやすくなります。"
     ),
     OnboardingPageData(
         imageName: "オンボ2",
-        title: "気分を記録してみよう",
-        description: "気分を記録することで、自分の心の変化に気づきやすくなります。"
+        title: "カレンダーで気分の流れを可視化",
+        description: "記録した気分はカレンダーで一目瞭然。\n\n月ごとの統計で、あなたの気分パターンを分析できます。"
     ),
     OnboardingPageData(
         imageName: "オンボ3",
-        title: "今日からスタート！",
-        description: "さっそく気分を記録して、毎日をもっと快適に過ごしましょう。"
+        title: "今日から心の健康管理を始めよう",
+        description: "気分記録は心の健康管理の第一歩。\n\nさっそく記録を始めて、より快適な毎日を過ごしましょう。"
     )
 ]
