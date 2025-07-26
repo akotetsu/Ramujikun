@@ -44,7 +44,7 @@ struct SettingsView: View {
         })
         // 認証シート
         .sheet(isPresented: $showAuthSheet) {
-            AuthenticationView()
+            AuthenticationView(initialAuthMode: authMode)
                 .environmentObject(authViewModel)
         }
         // リマインダー設定シート
@@ -141,6 +141,7 @@ struct SettingsView: View {
                 .padding(.horizontal)
             HStack(spacing: 16) {
                 Button(action: {
+                    authMode = .register
                     authViewModel.authState = .authenticating(flow: .signUp)
                     showAuthSheet = true
                 }) {
@@ -154,6 +155,7 @@ struct SettingsView: View {
                         .shadow(color: Color.themeAccent.opacity(0.3), radius: 8, x: 0, y: 4)
                 }
                 Button(action: {
+                    authMode = .login
                     authViewModel.authState = .authenticating(flow: .signIn)
                     showAuthSheet = true
                 }) {

@@ -282,7 +282,7 @@ private extension MoodEntryView {
         } label: {
             Image(systemName: "xmark.circle.fill")
                 .font(.largeTitle)
-                .foregroundColor(.themeAccent.opacity(0.3))
+                .foregroundColor(.themeAccent.opacity(0.8))
                 .padding(.top, 8)
                 .padding(.trailing, 8)
         }

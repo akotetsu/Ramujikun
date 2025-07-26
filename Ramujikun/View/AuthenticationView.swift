@@ -9,15 +9,20 @@ enum AuthMode: String, CaseIterable, Identifiable {
 struct AuthenticationView: View {
     @EnvironmentObject private var authViewModel: AuthViewModel
     @Environment(\.dismiss) private var dismiss
-    @State private var authMode: AuthMode = .login
+    @State private var authMode: AuthMode
+    
+    init(initialAuthMode: AuthMode = .login) {
+        _authMode = State(initialValue: initialAuthMode)
+    }
 
     var body: some View {
-        VStack(spacing: 32) {
-            // アイコン
-            Image(systemName: "icloud.and.arrow.up.fill")
-                .font(.system(size: 60))
-                .foregroundColor(.themeAccent)
-                .padding(.top, 40)
+        NavigationStack {
+            VStack(spacing: 32) {
+                // アイコン
+                Image(systemName: "icloud.and.arrow.up.fill")
+                    .font(.system(size: 60))
+                    .foregroundColor(.themeAccent)
+                    .padding(.top, 40)
 
             // タブ切り替え
             Picker("認証モード", selection: $authMode) {
@@ -64,27 +69,26 @@ struct AuthenticationView: View {
             .font(.subheadline)
 
             Spacer()
-
-            // --- リマインダー機能用スペース（仮） ---
-            VStack(spacing: 8) {
-                Divider()
-                Button(action: { /* 今後リマインダー設定画面へ遷移 */ }) {
-                    Label("リマインダー機能（今後追加予定）", systemImage: "bell")
-                        .font(.system(.body, design: .rounded).weight(.bold))
-                        .foregroundColor(.themeAccent.opacity(0.7))
-                        .padding(8)
-                        .frame(maxWidth: .infinity)
-                        .background(Color.themeEntryBackground)
-                        .cornerRadius(12)
-                }
-                .disabled(true)
-            }
-            .padding(.bottom, 24)
         }
         .padding()
         .background(Color.themeBackground.ignoresSafeArea())
+        .navigationBarBackButtonHidden(true)
+        .toolbar {
+            ToolbarItem(placement: .topBarTrailing) {
+                Button(action: {
+                    dismiss()
+                }) {
+                    Image(systemName: "xmark.circle.fill")
+                        .font(.title)
+                        .foregroundColor(.themeAccent.opacity(0.7))
+                        .padding(.top, 8)
+                        //.padding(.trailing, 8)
+                }
+            }
+        }
         .onDisappear {
             authViewModel.authState = .unauthenticated
+        }
         }
     }
     
@@ -136,8 +140,15 @@ struct AuthenticationForm: View {
 
 struct AuthenticationView_Previews: PreviewProvider {
     static var previews: some View {
-        AuthenticationView()
-            .environmentObject(AuthViewModel())
+        Group {
+            AuthenticationView(initialAuthMode: .login)
+                .environmentObject(AuthViewModel())
+                .previewDisplayName("ログインモード")
+            
+            AuthenticationView(initialAuthMode: .register)
+                .environmentObject(AuthViewModel())
+                .previewDisplayName("新規登録モード")
+        }
     }
 }
 
