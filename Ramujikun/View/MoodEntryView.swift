@@ -5,6 +5,7 @@ struct MoodEntryView: View {
     @StateObject private var viewModel: MoodEntryViewModel
     @Environment(\.dismiss) private var dismiss
     @FocusState private var isCommentFocused: Bool
+    @State private var showSuccessToast = false
     
     // UI constants
     private let commentEditorHeight: CGFloat = 120
@@ -53,6 +54,31 @@ struct MoodEntryView: View {
                 Text(errorMessage)
             }
         }
+        // トースト通知
+        .overlay(
+            Group {
+                if showSuccessToast {
+                    VStack {
+                        Spacer()
+                        HStack {
+                            Image(systemName: "checkmark.circle.fill")
+                                .foregroundColor(.green)
+                            Text("記録しました！")
+                                .font(.headline)
+                                .foregroundColor(.white)
+                        }
+                        .padding(.horizontal, 20)
+                        .padding(.vertical, 12)
+                        .background(Color.black.opacity(0.8))
+                        .cornerRadius(25)
+                        .shadow(color: .black.opacity(0.3), radius: 10)
+                        .transition(.move(edge: .bottom).combined(with: .opacity))
+                        .padding(.bottom, 60)
+                    }
+                }
+            }
+            .animation(.spring(response: 0.6, dampingFraction: 0.8), value: showSuccessToast)
+        )
     }
 }
 
@@ -247,7 +273,15 @@ private extension MoodEntryView {
             Task {
                 await viewModel.saveMood()
                 if viewModel.errorMessage == nil {
-                    dismiss()
+                    showSuccessToast = true
+                    // ハプティックフィードバック
+                    let impactFeedback = UIImpactFeedbackGenerator(style: .medium)
+                    impactFeedback.impactOccurred()
+                    // 2秒後に自動で閉じる
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+                        showSuccessToast = false
+                        dismiss()
+                    }
                 }
             }
         } label: {
