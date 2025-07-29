@@ -54,12 +54,14 @@ final class AuthService: AuthServiceProtocol {
     }
 
     func signUp(email: String, password: String) async throws -> User {
+        print("Attempting to sign up with email: \(email)")
         let authResult = try await auth.createUser(withEmail: email, password: password)
         print("Successfully signed up with email: \(authResult.user.email ?? "N/A")")
         return authResult.user
     }
     
     func signIn(email: String, password: String) async throws -> User {
+        print("Attempting to sign in with email: \(email)")
         let authResult = try await auth.signIn(withEmail: email, password: password)
         print("Successfully signed in with email: \(authResult.user.email ?? "N/A")")
         return authResult.user

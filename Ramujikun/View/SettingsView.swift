@@ -142,7 +142,6 @@ struct SettingsView: View {
             HStack(spacing: 16) {
                 Button(action: {
                     authMode = .register
-                    authViewModel.authState = .authenticating(flow: .signUp)
                     showAuthSheet = true
                 }) {
                     Text("アカウント連携")
@@ -156,7 +155,6 @@ struct SettingsView: View {
                 }
                 Button(action: {
                     authMode = .login
-                    authViewModel.authState = .authenticating(flow: .signIn)
                     showAuthSheet = true
                 }) {
                     Text("ログイン")

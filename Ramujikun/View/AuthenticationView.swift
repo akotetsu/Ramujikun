@@ -87,7 +87,8 @@ struct AuthenticationView: View {
             }
         }
         .onDisappear {
-            authViewModel.authState = .unauthenticated
+            // 認証画面が閉じられた時にエラーメッセージをクリア
+            authViewModel.errorMessage = nil
         }
         }
     }

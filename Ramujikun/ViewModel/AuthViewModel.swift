@@ -58,6 +58,7 @@ final class AuthViewModel: ObservableObject {
     }
     
     func linkAccount() {
+        print("LinkAccount called with email: \(email)")
         executeAuthTask { [weak self] in
             guard let self = self else { return nil }
             return try await self.authService.linkAccount(email: self.email, password: self.password)
@@ -65,6 +66,7 @@ final class AuthViewModel: ObservableObject {
     }
     
     func signUp() {
+        print("SignUp called with email: \(email)")
         executeAuthTask { [weak self] in
             guard let self = self else { return nil }
             return try await self.authService.signUp(email: self.email, password: self.password)
@@ -72,6 +74,7 @@ final class AuthViewModel: ObservableObject {
     }
     
     func signIn() {
+        print("SignIn called with email: \(email)")
         executeAuthTask { [weak self] in
             guard let self = self else { return nil }
             return try await self.authService.signIn(email: self.email, password: self.password)
@@ -100,13 +103,15 @@ final class AuthViewModel: ObservableObject {
         
         Task {
             do {
-                _ = try await task()
+                let user = try await task()
+                print("Auth task completed successfully")
                 self.email = ""
                 self.password = ""
-                self.authState = .unauthenticated
+                // 認証成功時はauthStateを変更しない（AuthStateDidChangeListenerが処理する）
             } catch {
+                print("Auth task failed with error: \(error)")
+                print("Error details: \(error.localizedDescription)")
                 self.errorMessage = "認証に失敗しました: \(error.localizedDescription)"
-                print(errorMessage ?? "Unknown error")
             }
             
             self.isLoading = false
