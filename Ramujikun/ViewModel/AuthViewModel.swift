@@ -21,6 +21,9 @@ final class AuthViewModel: ObservableObject {
     @Published var email = ""
     @Published var password = ""
     @Published var authState: AuthenticationState = .unauthenticated
+    @Published var isAuthenticationSuccessful: Bool = false
+    @Published var successMessage: String?
+    private var currentAuthType: String = ""
     
     var isUserAnonymous: Bool {
         authService.isUserAnonymous
@@ -59,6 +62,7 @@ final class AuthViewModel: ObservableObject {
     
     func linkAccount() {
         print("LinkAccount called with email: \(email)")
+        currentAuthType = "linkAccount"
         executeAuthTask { [weak self] in
             guard let self = self else { return nil }
             return try await self.authService.linkAccount(email: self.email, password: self.password)
@@ -67,6 +71,7 @@ final class AuthViewModel: ObservableObject {
     
     func signUp() {
         print("SignUp called with email: \(email)")
+        currentAuthType = "signUp"
         executeAuthTask { [weak self] in
             guard let self = self else { return nil }
             return try await self.authService.signUp(email: self.email, password: self.password)
@@ -75,6 +80,7 @@ final class AuthViewModel: ObservableObject {
     
     func signIn() {
         print("SignIn called with email: \(email)")
+        currentAuthType = "signIn"
         executeAuthTask { [weak self] in
             guard let self = self else { return nil }
             return try await self.authService.signIn(email: self.email, password: self.password)
@@ -100,6 +106,8 @@ final class AuthViewModel: ObservableObject {
     private func executeAuthTask(task: @escaping () async throws -> User?) {
         self.isLoading = true
         self.errorMessage = nil
+        self.isAuthenticationSuccessful = false
+        self.successMessage = nil
         
         Task {
             do {
@@ -107,7 +115,25 @@ final class AuthViewModel: ObservableObject {
                 print("Auth task completed successfully")
                 self.email = ""
                 self.password = ""
-                // 認証成功時はauthStateを変更しない（AuthStateDidChangeListenerが処理する）
+                self.isAuthenticationSuccessful = true
+                
+                // 成功メッセージを設定
+                switch self.currentAuthType {
+                case "signIn":
+                    self.successMessage = "ログインに成功しました！"
+                case "signUp":
+                    self.successMessage = "新規登録に成功しました！"
+                case "linkAccount":
+                    self.successMessage = "アカウント連携に成功しました！"
+                default:
+                    self.successMessage = "認証に成功しました！"
+                }
+                
+                // 認証成功後、少し遅延を入れてから認証画面を閉じる
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                    print("Setting authState to unauthenticated to close the view")
+                    self.authState = .unauthenticated
+                }
             } catch {
                 print("Auth task failed with error: \(error)")
                 print("Error details: \(error.localizedDescription)")

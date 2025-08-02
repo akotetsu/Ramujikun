@@ -51,6 +51,48 @@ struct AuthenticationView: View {
                     }
                 }
             )
+            .onChange(of: authViewModel.errorMessage) { oldValue, newValue in
+                // エラーメッセージがnilになったら認証成功とみなす
+                if oldValue != nil && newValue == nil && !authViewModel.isLoading {
+                    print("Authentication successful, dismissing view")
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                        dismiss()
+                    }
+                }
+            }
+                    .onChange(of: authViewModel.isAuthenticationSuccessful) { oldValue, newValue in
+            // 認証成功フラグがtrueになったら画面を閉じる
+            if newValue == true {
+                print("Authentication successful flag set, dismissing view")
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                    dismiss()
+                }
+            }
+        }
+        .overlay(
+            Group {
+                if let successMessage = authViewModel.successMessage {
+                    VStack {
+                        Spacer()
+                        HStack {
+                            Image(systemName: "checkmark.circle.fill")
+                                .foregroundColor(.green)
+                            Text(successMessage)
+                                .font(.headline)
+                                .foregroundColor(.white)
+                        }
+                        .padding(.horizontal, 20)
+                        .padding(.vertical, 12)
+                        .background(Color.black.opacity(0.8))
+                        .cornerRadius(25)
+                        .shadow(color: .black.opacity(0.3), radius: 10)
+                        .transition(.move(edge: .bottom).combined(with: .opacity))
+                        .padding(.bottom, 60)
+                    }
+                }
+            }
+            .animation(.spring(response: 0.6, dampingFraction: 0.8), value: authViewModel.successMessage != nil)
+        )
 
             // 切り替えリンク
             HStack(spacing: 8) {
@@ -89,6 +131,14 @@ struct AuthenticationView: View {
         .onDisappear {
             // 認証画面が閉じられた時にエラーメッセージをクリア
             authViewModel.errorMessage = nil
+        }
+        .onChange(of: authViewModel.authState) { oldValue, newValue in
+            print("AuthState changed from \(oldValue) to \(newValue)")
+            // 認証状態がunauthenticatedになったら画面を閉じる
+            if newValue == .unauthenticated {
+                print("Dismissing authentication view")
+                dismiss()
+            }
         }
         }
     }
